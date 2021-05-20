@@ -7,7 +7,11 @@
     [routerLinkActiveOptions]="{ exact: true }"
     >Home</a
   >
-  <button mat-button [matMenuTriggerFor]="placingAgencyMenu">
+  <button
+    *ngIf="isAuthenticated$ | async"
+    mat-button
+    [matMenuTriggerFor]="placingAgencyMenu"
+  >
     Placing Agencies
   </button>
   <mat-menu #placingAgencyMenu="matMenu">

@@ -1,0 +1,17 @@
+This app requires four crypto keys using elliptic curve. These keys are used to sign verify json web tokens (JWT). One set of two is for the access token which actually authenticates the user. One set is for refresh tokens so the client can receive a new access token without logging in (refresh tokens expire in one week vs. 30 seconds for access tokens).
+
+The signing keys are marked "private" and the verify keys are marked "public".
+
+Create "ec_access_private.pem" and "ec_access_public.pem" by running the commands (use Git Bash or a linux/Mac terminal):
+    openssl ecparam -genkey -name prime256v1 -noout -out ec_access_private.pem
+
+    then
+
+    openssl ec -in ec_private.pem -pubout -out ec_access_public.pem
+
+Create "ec_refresh_private.pem" and "ec_refresh_public.pem" by running the commands (use Git Bash or a linux/Mac terminal):
+    openssl ecparam -genkey -name prime256v1 -noout -out ec_refresh_private.pem
+
+    then
+
+    openssl ec -in ec_private.pem -pubout -out ec_refresh_public.pem

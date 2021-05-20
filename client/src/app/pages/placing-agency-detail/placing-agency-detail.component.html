@@ -1,0 +1,23 @@
+<ng-container *ngIf="placingAgency$ | async as pa; else notFound">
+  <mat-card>
+    <mat-card-header>
+      <img
+        mat-card-avatar
+        [src]="pa.logo ? pa.logo : 'assets/images/blank-placing-agency.png'"
+        alt="logo"
+      />
+      <mat-card-title>{{ pa.name }}</mat-card-title>
+      <mat-card-subtitle
+        >{{ pa.activePlacements.length }} Active |
+        {{ pa.dischargedPlacements.length }} Discharged
+        Placements</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content> some stuff... </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #notFound>
+  <h1>Not Found</h1>
+  <p>The placing agency you were looking for wasn't found.</p>
+</ng-template>

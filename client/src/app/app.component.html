@@ -1,0 +1,8 @@
+<div class="app mat-typography">
+  <nav>
+    <app-navbar [isAuthenticated$]="authService.isLoggedIn$"></app-navbar>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

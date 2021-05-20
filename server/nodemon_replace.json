@@ -1,0 +1,17 @@
+{
+    "env": {
+        "DB_STRING": "my connection string to MongoDB",
+        "PORT": 3000,
+        "NODE_ENV": "development",
+        "REDIS_URL": "my connection string to Redis",
+        "REDIS_PASS": "my Redis password",
+        "AWS_BUCKET_NAME": "my S3 bucket",
+        "AWS_BUCKET_REGION": "my S3 bucket region",
+        "AWS_ACCESS_ID": "my AWS API access id",
+        "AWS_SECRET_KEY": "my AWS API secret key"
+    },
+    "watch": ["src"],
+    "ext": "ts,json",
+    "ignore": ["src/**/*.spec.ts"],
+    "exec": "npx ts-node ./src/index.ts"
+}

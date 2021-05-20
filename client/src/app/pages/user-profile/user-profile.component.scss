@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  flex: 0 0 100%;
+}
+
+.other {
+  flex: 0 0 100%;
+}
+
+.half-width {
+  flex: 1 1 50%;
+}
+
+.add-button {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}

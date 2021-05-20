@@ -1,0 +1,147 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <img
+        *ngIf="picturePreview !== '' && picturePreview"
+        mat-card-avatar
+        [src]="picturePreview"
+      />
+      <mat-card-title>{{
+        this.registerForm.get("nameGiven").value
+          ? this.registerForm.get("nameGiven").value +
+            " " +
+            this.registerForm.get("nameFamily").value
+          : "Jane Doe"
+      }}</mat-card-title>
+      <mat-card-subtitle>{{
+        this.registerForm.get("jobTitle").value
+          ? this.registerForm.get("jobTitle").value
+          : "Worker"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-stroked-button type="button" (click)="pickImage()">
+        Pick Image
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card style="margin-top: 2rem">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <mat-form-field appearance="outline">
+        <mat-label>Given Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Sam"
+          formControlName="nameGiven"
+        />
+        <mat-error *ngIf="registerForm.get('nameGiven').invalid"
+          >Must be at least two characters</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Middle Name</mat-label>
+        <input type="text" matInput formControlName="nameMiddle" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Family Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Doe"
+          formControlName="nameFamily"
+        />
+        <mat-error *ngIf="registerForm.get('nameFamily').invalid"
+          >Must be at least two characters</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerDateOfBirth"
+          formControlName="dateOfBirth"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDateOfBirth"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerDateOfBirth></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Manager</mat-label>
+        <mat-select formControlName="manager">
+          <mat-option value="chris_id">Chris Wilson</mat-option>
+          <mat-option value="william_id">William Wilson</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Job Title</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Foster Parent"
+          formControlName="jobTitle"
+        />
+        <mat-error *ngIf="registerForm.get('jobTitle').invalid"
+          >Required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="your.name@email.com"
+          formControlName="email"
+        />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="registerForm.get('email').invalid"
+          >Enter a valid email address</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-error *ngIf="registerForm.get('password').invalid"
+          >Password must be 8 characters or more</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password Confirmation</mat-label>
+        <input type="password" matInput formControlName="passwordConfirm" />
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-error
+          *ngIf="registerForm.get('passwordConfirm').errors?.mustMatch"
+        >
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <a mat-stroked-button color="warn" routerLink="/">Cancel</a>
+        <button mat-flat-button type="submit" [disabled]="!registerForm.valid">
+          Register
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

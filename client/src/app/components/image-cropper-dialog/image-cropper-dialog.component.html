@@ -1,0 +1,17 @@
+<h2 matDialogTitle>Edit Image</h2>
+<mat-dialog-content>
+  <input type="file" (change)="fileChangeEvent($event)" />
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    [resizeToWidth]="128"
+    [onlyScaleDown]="true"
+    format="jpeg"
+    (imageCropped)="imageCropped($event)"
+    (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="save()">Looks Good</button>
+</mat-dialog-actions>

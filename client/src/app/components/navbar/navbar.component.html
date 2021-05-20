@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <span>WEB</span>
+  <a
+    routerLink="/"
+    mat-button
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
+  <button mat-button [matMenuTriggerFor]="placingAgencyMenu">
+    Placing Agencies
+  </button>
+  <mat-menu #placingAgencyMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/', 'placing-agencies']">List</button>
+    <button mat-menu-item [routerLink]="['/', 'placing-agencies', 'create']">
+      Create
+    </button>
+  </mat-menu>
+  <span style="flex: 1 0 auto"></span>
+  <a
+    mat-button
+    routerLink="/user-profile"
+    routerLinkActive="active"
+    *ngIf="isAuthenticated$ | async"
+    >Profile</a
+  >
+  <logout-button
+    *ngIf="isAuthenticated$ | async; else authNotAuthenticated"
+  ></logout-button>
+</mat-toolbar>
+
+<ng-template #authNotAuthenticated>
+  <login-button></login-button>
+  <signup-button></signup-button>
+</ng-template>

@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+mat-form-field {
+  flex: 1 1 33%;
+  padding: 1rem;
+}
+
+.full-row {
+  flex: 1 0 100%;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}

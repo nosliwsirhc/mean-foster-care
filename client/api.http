@@ -1,0 +1,33 @@
+GET http://localhost:3000 HTTP/1.1
+
+###
+POST http://localhost:3000/api/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Chris",
+    "lastName": "Wilson",
+    "email": "chriswilson@annieshavens.ca",
+    "password": "12345678",
+    "passwordDuplicate": "12345678"
+}
+
+###
+POST http://localhost:3000/api/users/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "chriswilson@annieshavens.ca",
+    "password": "12345678"
+}
+
+###
+GET http://localhost:3000/api/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDg4ZTRjZDY1NDQyYjc1NjAzYTc1ZmEiLCJpYXQiOjE2MTk2NjgyMjEsImV4cCI6MTYxOTY2ODIzNn0.psOWLli2O83X4lcvLJ6_-H3e4ZOwonizNbN4G1GVbLYq-aoiqLdM8_P6g0_5tjC67VlBPyKee0e7ubpYVwjJ00v0QT4DVdP8xPXf1TRj97_L7CfkBswwq-6yEtMbwUdVScJqotgbtZwFY_BZxihDpw8fbP9xV-7o33v-S0ZRaBnLM5U71t4NHx2_8tiR0GIaM5IQzEDc7r6vgpE0NfIuCpLd5rGNE3jNhingbyCm50NYSo4W3u8BgRb5aQwE-a9Yp9AOoCmVriNyqXS7k-ksDFH3P8HofP444t5yB34Ulvg9WgPfFol7utGsAwDtYiXYiEGGuc-OPTrUPrwz3ki4AvN5AOAnfAHoCwMXtH8_GMoNc_eaYYa3dQ_q9WGrXmVP4WSOqtaRj641vl1_hFGuezTH0dpRA-rbXDsGPxDYXIwKurMkorr_CCOvq-4S01ZDLtYbRjyRPX2FhOB0Z2XYl9SLn8rspmjuXB81U1UkiOkW1Jnaj-2_bH_M80y2HSkRKM5mJnpMQjOFYaC94NFkR7tbGcYexuhykSwor_3pWjGhGZg58Eux_pKdsZR9wmOdnIR7nDSVH60SyX5GXglLQVHtZUIM_P3cAz0uB0CYTiKmeeXhppRvJMXaVp6lQ6py14JICZDIkSl029Q2sFQvS2IWh3LbZaQq57TcBckgDtQ
+
+###
+GET http://localhost:3000/test-protected HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDg4ZTRjZDY1NDQyYjc1NjAzYTc1ZmEiLCJpYXQiOjE2MTk2NjYxODksImV4cCI6MTYxOTY4NDE4OX0.WuPpMj7WIB3rzhMuoeDgWFe99ybtsNf1xPqwq4hACkeEd9sqi60Vb0hGaXxsLdRiKOS-uKmUt80kGtSXlD8xnzrwSGIqI3SPcqfMsMNFVeH2X65PvErNExuxlh_wVAr-xtlx7vvWo_tpy9AjdVvJBhXAiArceZ6oJqQS7_JZew4f-DLFO5HTZdAjZhz-6Y5g6a6FTfaborHbT9gkiLQW6QeMUueDbUGQqiF81Z3xVIb9fnc48Yo5WwPsF61koQ7Pm3vvFt38RkFVOxx07ILQ0VGsoneGBomPHR1zGoNAbdeTQCL0nAZ1PQFaKEQ8iJUNvDF2q7CWwmiQv2T4ePsUZRTKiT34ePIFRJ4TNgQ4EbXTekyZvGQi7zlf9rGQ7xUxZsb12I2CxXyBa2PwyXAsXNvuvzfmao-tVczF5r3n-xOhvsgF-_bq0FYJ7QtchNZSi1chCUu9FaSGcqFAUjZggU9nIdF0Gy343u9s-2lG4xmKzELyS4NZFxMdDsMy0RJ4wouvtjz-0rqfV54tsCC1Dp2xAJ5zGf3F5tGVnpqStmKhbkSD5r_PhES9q2gjYBOJJ9Plt2H0VYnJeSC-0P-ldQcbYRxhcz7tirWI3NVGRYTF8iemJ8PAA-M-yjtSJXfZWBI1KnXHGSOyWgwhcgnpXI13ZhRv9AQVUQ2rjRrVhB0
+
+###
+POST http://localhost:3000/api/identity/forgot-password HTTP/1.1

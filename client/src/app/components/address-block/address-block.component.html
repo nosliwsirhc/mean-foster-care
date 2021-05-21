@@ -1,0 +1,23 @@
+<div>
+  <h3>Address</h3>
+  <div
+    class="address"
+    *ngIf="
+      address.street1 || address.street2 || address.city || address.postalCode;
+      else addressNotEntered
+    "
+  >
+    <p>
+      <span *ngIf="address.street1">{{ address.street1 }}</span>
+      <span *ngIf="address.street2"><br />{{ address.street2 }}</span>
+      <span *ngIf="address.city && address.province && address.postalCode"
+        ><br />{{ address.city }}, {{ address.province }}
+        {{ address.postalCode }}</span
+      >
+    </p>
+  </div>
+</div>
+
+<ng-template #addressNotEntered>
+  <p><strong>Address has not been entered.</strong></p>
+</ng-template>

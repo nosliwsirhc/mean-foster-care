@@ -1,0 +1,19 @@
+<div>
+  <h3>Contact</h3>
+  <div
+    class="contact"
+    *ngIf="contact.phone || contact.fax; else contactNotEntered"
+  >
+    <p>
+      <span *ngIf="contact.phone">Phone: {{ contact.phone }}</span>
+      <span *ngIf="contact.phone && contact.fax"
+        ><br />Fax: {{ contact.fax }}</span
+      >
+      <span *ngIf="contact.fax && !contact.phone">Fax: {{ contact.fax }}</span>
+    </p>
+  </div>
+</div>
+
+<ng-template #contactNotEntered>
+  <p><strong>Contact has not been entered.</strong></p>
+</ng-template>

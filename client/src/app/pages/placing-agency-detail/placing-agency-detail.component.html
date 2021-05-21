@@ -13,7 +13,20 @@
         Placements</mat-card-subtitle
       >
     </mat-card-header>
-    <mat-card-content> some stuff... </mat-card-content>
+    <mat-card-content>
+      <address-block
+        [address]="{
+          street1: pa.street1,
+          street2: pa.street2,
+          city: pa.city,
+          province: pa.province,
+          postalCode: pa.postalCode
+        }"
+      ></address-block>
+      <contact-block
+        [contact]="{ phone: pa.phone, fax: pa.fax }"
+      ></contact-block>
+    </mat-card-content>
   </mat-card>
 </ng-container>
 

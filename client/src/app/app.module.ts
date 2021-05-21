@@ -24,6 +24,8 @@ import { ImageCropperDialogComponent } from './components/image-cropper-dialog/i
 import { CreatePlacingAgencyComponent } from './pages/create-placing-agency/create-placing-agency.component';
 import { PlacingAgencyDetailComponent } from './pages/placing-agency-detail/placing-agency-detail.component';
 import { ListPlacingAgenciesComponent } from './pages/list-placing-agencies/list-placing-agencies.component';
+import { AddressBlockComponent } from './components/address-block/address-block.component';
+import { ContactBlockComponent } from './components/contact-block/contact-block.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { ListPlacingAgenciesComponent } from './pages/list-placing-agencies/list
     CreatePlacingAgencyComponent,
     PlacingAgencyDetailComponent,
     ListPlacingAgenciesComponent,
+    AddressBlockComponent,
+    ContactBlockComponent,
   ],
   imports: [
     BrowserModule,

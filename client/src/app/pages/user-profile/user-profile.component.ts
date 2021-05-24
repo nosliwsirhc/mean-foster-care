@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { ActivatedRoute, Params } from '@angular/router';
+import { of, Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { ImageCropperDialogComponent } from 'src/app/components/image-cropper-dialog/image-cropper-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,26 +17,31 @@ import { ChangePasswordDialogComponent } from './change-password-dialog/change-p
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
   user: User;
-  authenticationSub: Subscription;
+  routerSub: Subscription;
   isPictureLoading = true;
 
   constructor(
     private dialog: MatDialog,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.authenticationSub = this.authService.isLoggedIn$.subscribe(
-      (status) => {
-        if (!status) return;
-        this.user = this.authService.getUser();
-      }
-    );
+    this.routerSub = this.activatedRoute.params
+      .pipe(
+        switchMap((params: Params) => {
+          const id = params.get('id');
+          return this.userService.getUser(id);
+        })
+      )
+      .subscribe((user) => {
+        this.user = user;
+      });
   }
 
   ngOnDestroy(): void {
-    this.authenticationSub.unsubscribe();
+    this.routerSub.unsubscribe();
   }
 
   get roles() {

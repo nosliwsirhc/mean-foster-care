@@ -1,1 +1,39 @@
 <h1>Home</h1>
+<div class="actions" *ngIf="authenticated$ | async; else notAuthenticated">
+  <div class="manager-actions">
+    <h2>Manager Actions</h2>
+    <a mat-button [routerLink]="['/', 'register']">Register User</a>
+  </div>
+  <div class="client-actions">
+    <h2>Client Actions</h2>
+    <a mat-button href="#">List Active Clients</a>
+    <a mat-button href="#">List Discharged Clients</a>
+    <a mat-button href="#">New Client</a>
+    <a mat-button href="#">Discharge Client</a>
+    <div class="sub-actions">
+      <mat-divider></mat-divider>
+      <a mat-button href="#">Case Note</a>
+      <a mat-button href="#">Update Client Profile</a>
+      <a mat-button href="#">Plan of Care</a>
+      <a mat-button href="#">Incident Report</a>
+      <a mat-button href="#">Serious Occurrence Report</a>
+    </div>
+  </div>
+  <div class="home-actions">
+    <h2>Home Actions</h2>
+    <a mat-button href="#">List Active Homes</a>
+    <a mat-button href="#">List Closed Homes</a>
+    <a mat-button href="#">New Home</a>
+    <a mat-button href="#">Close Home</a>
+    <div class="sub-actions">
+      <mat-divider></mat-divider>
+      <a mat-button href="#">Case Note</a>
+      <a mat-button href="#">Update Home Profile</a>
+      <a mat-button href="#">Annual Review</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #notAuthenticated>
+  <p>In order to use this site, you must login.</p>
+</ng-template>

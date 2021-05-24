@@ -26,6 +26,8 @@ import { PlacingAgencyDetailComponent } from './pages/placing-agency-detail/plac
 import { ListPlacingAgenciesComponent } from './pages/list-placing-agencies/list-placing-agencies.component';
 import { AddressBlockComponent } from './components/address-block/address-block.component';
 import { ContactBlockComponent } from './components/contact-block/contact-block.component';
+import { ActivePlacementsComponent } from './pages/placing-agency-detail/active-placements/active-placements.component';
+import { DischargedPlacementsComponent } from './pages/placing-agency-detail/discharged-placements/discharged-placements.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ContactBlockComponent } from './components/contact-block/contact-block.
     ListPlacingAgenciesComponent,
     AddressBlockComponent,
     ContactBlockComponent,
+    ActivePlacementsComponent,
+    DischargedPlacementsComponent,
   ],
   imports: [
     BrowserModule,

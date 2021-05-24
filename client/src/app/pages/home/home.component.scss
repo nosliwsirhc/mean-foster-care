@@ -1,0 +1,19 @@
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .client-actions,
+  .home-actions,
+  .sub-actions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .client-actions,
+  .home-actions {
+    margin-right: 2rem;
+  }
+}

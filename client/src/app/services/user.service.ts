@@ -37,4 +37,14 @@ export class UserService {
         })
       );
   }
+
+  getUser(id: string) {
+    return this.http.get<User>(`${env.serverUrl}/users/profile/${id}`);
+  }
+
+  getManagers() {
+    return this.http.get<{ _id: string; fullName: string }[]>(
+      `${env.serverUrl}/users/managers`
+    );
+  }
 }

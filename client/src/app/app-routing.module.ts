@@ -10,9 +10,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   {
-    path: 'user-profile',
+    path: 'users/profile/:id',
     component: UserProfileComponent,
     canActivate: [AuthGuard],
   },

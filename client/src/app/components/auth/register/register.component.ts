@@ -1,39 +1,45 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch } from '../../../_helpers/validators/must-match.validator';
 import { MimeType } from '../../../_helpers/validators/mime-type.validator';
 import { AuthService } from '../../../services/auth.service';
 import { RegisterUser } from '../../../models/register.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageCropperDialogComponent } from '../../image-cropper-dialog/image-cropper-dialog.component';
 import { dataURLtoFile } from 'src/app/_helpers/dataURLtoFile';
+import { UserService } from 'src/app/services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styles: [
-    'form { display: flex; flex-direction: column; align-items: center; }',
-    'form mat-form-field { width: 90% }',
-    '.actions button { align-items: centre }',
-    '.gender-radio { width: 100% }',
-    '.radio-margin { margin-left: 1rem; }',
+    'mat-form-field { width: 100%; }',
+    '.cancel-button { margin-right: 1rem !important; }',
+    '.checkbox-section { display: flex; align-content: center; align-items: center; margin-bottom: 1rem;}',
+    '.checkbox-margin { margin: 0 10px; }',
   ],
 })
-export class RegisterComponent implements OnInit, AfterViewInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
   picturePreview = 'assets/images/blank-avatar.png';
+  managers: { _id: string; fullName: string }[];
+  managerSub: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private userService: UserService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
+    this.managerSub = this.userService.getManagers().subscribe((managers) => {
+      this.managers = managers;
+    });
     this.registerForm = this.formBuilder.group({
-      nameGiven: ['Hilda', [Validators.minLength(2), Validators.required]],
+      nameGiven: [null, [Validators.minLength(2), Validators.required]],
       nameMiddle: [null],
-      nameFamily: ['Wilson', [Validators.minLength(2), Validators.required]],
+      nameFamily: [null, [Validators.minLength(2), Validators.required]],
       picture: [
         null,
         {
@@ -42,26 +48,17 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         },
       ],
       dateOfBirth: [null, [Validators.required]],
-      gender: ['female', [Validators.required]],
-      manager: ['william_id', [Validators.required]],
-      jobTitle: ['Placement Coordinator', [Validators.required]],
-      email: [
-        'hildawilson@annieshavens.ca',
-        [Validators.email, Validators.required],
-      ],
+      gender: [null, [Validators.required]],
+      manager: [null, [Validators.required]],
+      jobTitle: [null, [Validators.required]],
+      email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.minLength(8), Validators.required]],
-      passwordConfirm: [null],
+      sendPasswordToUser: [true, [Validators.required]],
     });
   }
 
-  ngAfterViewInit(): void {
-    this.registerForm
-      .get('passwordConfirm')
-      .setValidators([
-        Validators.minLength(8),
-        Validators.required,
-        MustMatch(this.registerForm.get('password')),
-      ]);
+  ngOnDestroy(): void {
+    this.managerSub.unsubscribe();
   }
 
   pickImage() {
@@ -94,7 +91,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         manager: this.registerForm.value.manager,
         gender: this.registerForm.value.gender,
         password: this.registerForm.value.password,
-        passwordConfirm: this.registerForm.value.passwordConfirm,
       };
       console.log('Trying to register...', userProfile);
       this.authService.register(userProfile);

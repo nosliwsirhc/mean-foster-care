@@ -92,14 +92,9 @@ export class AuthService {
       }
     });
     this.http
-      .post<AuthResponse>(`${env.serverUrl}/auth/register`, postData)
+      .post<{ userId: string }>(`${env.serverUrl}/auth/register`, postData)
       .subscribe((authResponse) => {
-        const { user, accessJwt, accessExp, refreshJwt, refreshExp } =
-          authResponse;
-        this.user = authResponse.user;
-        this.storeTokens(user, accessJwt, accessExp, refreshJwt, refreshExp);
-        this.isLoggedInSubject.next(true);
-        this.router.navigate(['/', 'user-profile']);
+        this.router.navigate(['/', 'users', 'profile', authResponse.userId]);
       });
   }
 

@@ -6,12 +6,21 @@ import { upload } from '../_middleware/multer'
 const router = Router()
 
 /**
+ * GET ALL USERS
+ */
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  UserController.getUsers
+)
+
+/**
  * GET USER PROFILE
  */
 router.get(
   '/profile/:id',
   passport.authenticate('jwt', { session: false }),
-  UserController.getOwnUser
+  UserController.getUser
 )
 
 /**

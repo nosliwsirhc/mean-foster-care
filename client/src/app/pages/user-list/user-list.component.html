@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User List</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<mat-card class="user-list">
+  <mat-nav-list>
+    <a
+      mat-list-item
+      *ngFor="let user of users$ | async"
+      [routerLink]="['/', 'users', 'profile', user._id]"
+    >
+      <img
+        matListAvatar
+        [src]="user.picture | authImage | async"
+        alt="profile picture"
+      />
+      <h3 matLine>
+        {{ user.fullName }}
+      </h3>
+      <p matLine>{{ user.jobTitle }}</p>
+    </a>
+  </mat-nav-list>
+</mat-card>

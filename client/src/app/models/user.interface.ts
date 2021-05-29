@@ -9,6 +9,7 @@ export interface User {
   fullName?: string;
   gender: string;
   isActive: boolean;
+  isManager: boolean;
   jobTitle: string;
   manager: PopulatedManager;
   nameGiven: string;

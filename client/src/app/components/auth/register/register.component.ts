@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       gender: [null, [Validators.required]],
       manager: [null, [Validators.required]],
       jobTitle: [null, [Validators.required]],
+      isManager: [false, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.minLength(8), Validators.required]],
       sendPasswordToUser: [true, [Validators.required]],
@@ -82,6 +83,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         email: this.registerForm.value.email,
         roles: ['user'],
         isActive: true,
+        isManager: this.registerForm.value.isManager,
         nameGiven: this.registerForm.value.nameGiven,
         nameMiddle: this.registerForm.value.nameMiddle,
         nameFamily: this.registerForm.value.nameFamily,
@@ -92,8 +94,21 @@ export class RegisterComponent implements OnInit, OnDestroy {
         gender: this.registerForm.value.gender,
         password: this.registerForm.value.password,
       };
-      console.log('Trying to register...', userProfile);
       this.authService.register(userProfile);
     }
+  }
+
+  get fullName() {
+    const firstName = this.registerForm.get('nameGiven').value;
+    const middleName = this.registerForm.get('nameMiddle').value;
+    const familyName = this.registerForm.get('nameFamily').value;
+    if (firstName && !middleName && !familyName) return firstName;
+    if (firstName && !middleName && familyName)
+      return firstName + ' ' + familyName;
+    if (firstName && middleName && familyName)
+      return firstName + ' ' + middleName + ' ' + familyName;
+    if (firstName && middleName) return firstName + ' ' + middleName;
+    if (!firstName && !middleName && familyName) return familyName;
+    return 'Jane Doe';
   }
 }

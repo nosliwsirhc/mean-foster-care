@@ -38,6 +38,10 @@ export class UserService {
       );
   }
 
+  getUsers() {
+    return this.http.get<User[]>(`${env.serverUrl}/users`);
+  }
+
   getUser(id: string) {
     return this.http.get<User>(`${env.serverUrl}/users/profile/${id}`);
   }

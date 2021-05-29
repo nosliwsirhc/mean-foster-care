@@ -5,7 +5,9 @@
     *ngIf="contact.phone || contact.fax; else contactNotEntered"
   >
     <p>
-      <span *ngIf="contact.phone">Phone: {{ contact.phone }}</span>
+      <span *ngIf="contact.phone"
+        >Phone: <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></span
+      >
       <span *ngIf="contact.phone && contact.fax"
         ><br />Fax: {{ contact.fax }}</span
       >

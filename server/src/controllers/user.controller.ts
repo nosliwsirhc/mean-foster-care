@@ -19,14 +19,29 @@ export const changePassword = async (req: Request, res: Response) => {
   }
 }
 
-export const getOwnUser = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
-    const userId = req.user
+    const requestingUser = await User.findOne({ _id: req.user })
+    if (!requestingUser || !requestingUser.isManager)
+      return res.status(401).json({ message: 'Not authorized' })
+    const users = await User.find({ isActive: true }).sort({ nameGiven: 1 })
+    res.json(users)
+  } catch (error) {
+    res.status(500).json({ message: 'Server error.' })
+  }
+}
+
+export const getUser = async (req: Request, res: Response) => {
+  try {
+    const requestingUser = await User.findOne({ _id: req.user })
     const userParam = req.params.id
-    if (userId !== userParam) {
+    if (
+      !requestingUser ||
+      (requestingUser._id !== userParam && !requestingUser.isManager)
+    ) {
       return res.sendStatus(403)
     }
-    const user = await User.findOne({ _id: userId })
+    const user = await User.findOne({ _id: userParam })
     if (!user) return res.sendStatus(404)
     const userJson = user.toJSON()
     res.json(userJson)

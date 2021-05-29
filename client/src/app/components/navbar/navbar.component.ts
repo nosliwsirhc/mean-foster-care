@@ -1,19 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: [
-    'a {margin-left: 2rem;}',
-    '.active {background: rgba(255,255,255,0.2)}',
-  ],
+  styleUrls: ['./navbar.component.scss'],
+  // styles: [
+
+  // ],
 })
 export class NavbarComponent implements OnInit {
   @Input()
   isAuthenticated$: Observable<boolean>;
+  @Input()
+  user: User;
+  @Output('logout')
+  logoutEmitter = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.logoutEmitter.emit();
+  }
 }

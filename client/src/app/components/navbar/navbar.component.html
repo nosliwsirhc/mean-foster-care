@@ -1,36 +1,26 @@
 <mat-toolbar color="primary">
-  <span>WEB</span>
   <a
-    routerLink="/"
-    mat-button
+    [routerLink]="['/']"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
-    >Home</a
   >
-  <button
-    *ngIf="isAuthenticated$ | async"
-    mat-button
-    [matMenuTriggerFor]="placingAgencyMenu"
-  >
-    Placing Agencies
-  </button>
-  <mat-menu #placingAgencyMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/', 'placing-agencies']">List</button>
-    <button mat-menu-item [routerLink]="['/', 'placing-agencies', 'create']">
-      Create
-    </button>
-  </mat-menu>
+    <img src="./assets/images/logo.jpg" alt="logo" class="logo" />
+  </a>
   <span style="flex: 1 0 auto"></span>
-  <a
-    mat-button
-    routerLink="/user-profile"
-    routerLinkActive="active"
+  <img
+    [src]="user?.picture | authImage | async"
+    alt="profile picture"
+    class="profile-picture"
     *ngIf="isAuthenticated$ | async"
-    >Profile</a
-  >
-  <logout-button
-    *ngIf="isAuthenticated$ | async; else authNotAuthenticated"
-  ></logout-button>
+    [matMenuTriggerFor]="profileMenu"
+  />
+  <login-button *ngIf="!(isAuthenticated$ | async)"></login-button>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/', 'users', 'profile', user?._id]">
+      Profile
+    </button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
 </mat-toolbar>
 
 <ng-template #authNotAuthenticated>

@@ -24,7 +24,6 @@ export class AuthService {
   private readonly ACCESS_EXP = 'access-exp';
   private readonly REFRESH_TOKEN = 'refresh-token';
   private readonly REFRESH_EXP = 'refresh-exp';
-  private user: User;
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   public isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -42,7 +41,6 @@ export class AuthService {
           const { user, accessJwt, accessExp, refreshJwt, refreshExp } =
             authResponse;
           if (accessJwt && refreshJwt) {
-            this.user = authResponse.user;
             this.storeTokens(
               user,
               accessJwt,
@@ -51,7 +49,7 @@ export class AuthService {
               refreshExp
             );
             this.isLoggedInSubject.next(true);
-            this.router.navigate(['/', 'user-profile']);
+            this.router.navigate(['/', 'users', 'profile', user._id]);
           }
         })
       );
@@ -67,12 +65,12 @@ export class AuthService {
       .delete(`${env.serverUrl}/auth/logout`, { headers })
       .subscribe(() => {
         this.removeTokens();
-        this.user = null;
         this.isLoggedInSubject.next(false);
       });
   }
 
   register(user: RegisterUser) {
+    console.log(user);
     const postData = new FormData();
     Object.keys(user).forEach((key) => {
       if (key === 'picture') {
@@ -81,8 +79,6 @@ export class AuthService {
           user.picture,
           user.nameGiven + ' ' + user.nameFamily
         );
-      } else if (!user[key]) {
-        return;
       } else if (Array.isArray(user[key])) {
         user[key].forEach((value, i) => {
           postData.append(`${key}[${i}]`, value);
@@ -127,7 +123,8 @@ export class AuthService {
   }
 
   getUser() {
-    return { ...this.user };
+    const user = <User>JSON.parse(localStorage.getItem(this.USER));
+    return user;
   }
 
   private storeTokens(
@@ -162,9 +159,11 @@ export class AuthService {
       this.http
         .get(`${env.serverUrl}/users/profile/${userId}`)
         .subscribe((user) => {
-          this.user = user as User;
-          console.log(user);
-          this.isLoggedInSubject.next(true);
+          if (user) {
+            this.isLoggedInSubject.next(true);
+          } else {
+            this.isLoggedInSubject.next(false);
+          }
         });
     }
   }
@@ -187,7 +186,6 @@ export class AuthService {
 
   updateUserInLocalStorage(user: User) {
     localStorage.setItem(this.USER, JSON.stringify(user));
-    this.user = user;
   }
 
   isAccessTokenExpired(): boolean {

@@ -31,7 +31,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.routerSub = this.activatedRoute.params
       .pipe(
         switchMap((params: Params) => {
-          const id = params.get('id');
+          const id = params['id'];
           return this.userService.getUser(id);
         })
       )

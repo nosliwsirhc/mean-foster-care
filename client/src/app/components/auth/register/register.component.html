@@ -6,13 +6,7 @@
         mat-card-avatar
         [src]="picturePreview"
       />
-      <mat-card-title>{{
-        this.registerForm.get("nameGiven").value
-          ? this.registerForm.get("nameGiven").value +
-            " " +
-            this.registerForm.get("nameFamily").value
-          : "Jane Doe"
-      }}</mat-card-title>
+      <mat-card-title>{{ fullName }}</mat-card-title>
       <mat-card-subtitle>{{
         this.registerForm.get("jobTitle").value
           ? this.registerForm.get("jobTitle").value
@@ -102,6 +96,12 @@
           >Required</mat-error
         >
       </mat-form-field>
+
+      <section class="checkbox-section">
+        <mat-checkbox class="checkbox-margin" formControlName="isManager"
+          >Is this person a manager?</mat-checkbox
+        >
+      </section>
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>

@@ -1,6 +1,8 @@
 <h2 mat-dialog-title>Login</h2>
 <div class="warning" *ngIf="loginError">
-  <h3 class="mat-h3">There was an error logging in. Check your credentials and try again.</h3>
+  <h3 class="mat-h3">
+    There was an error logging in. Check your credentials and try again.
+  </h3>
 </div>
 <form [formGroup]="loginForm" (ngSubmit)="login()">
   <mat-dialog-content>
@@ -11,6 +13,7 @@
         matInput
         placeholder="your.name@email.com"
         formControlName="email"
+        autofocus
       />
       <mat-icon matSuffix>email</mat-icon>
       <mat-error *ngIf="loginForm.get('email').invalid"
@@ -30,7 +33,11 @@
     <button mat-stroked-button color="warn" mat-dialog-close type="button">
       Cancel
     </button>
-    <button mat-flat-button color="primary" [disabled]="!loginForm.valid || isLoggingIn">
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="!loginForm.valid || isLoggingIn"
+    >
       Authenticate
     </button>
   </mat-dialog-actions>

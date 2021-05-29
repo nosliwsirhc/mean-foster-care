@@ -28,9 +28,17 @@ import { AddressBlockComponent } from './components/address-block/address-block.
 import { ContactBlockComponent } from './components/contact-block/contact-block.component';
 import { ActivePlacementsComponent } from './pages/placing-agency-detail/active-placements/active-placements.component';
 import { DischargedPlacementsComponent } from './pages/placing-agency-detail/discharged-placements/discharged-placements.component';
+import { ListClientsComponent } from './pages/list-clients/list-clients.component';
+import { ClientDetailComponent } from './pages/client-detail/client-detail.component';
+import { CreateClientComponent } from './pages/create-client/create-client.component';
+import { DischargeClientComponent } from './pages/discharge-client/discharge-client.component';
+import { CreateCaseNoteComponent } from './pages/create-case-note/create-case-note.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { AutofocusDirective } from './_helpers/directives/autofocus.directive';
 
 @NgModule({
   declarations: [
+    AutofocusDirective,
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -48,6 +56,12 @@ import { DischargedPlacementsComponent } from './pages/placing-agency-detail/dis
     ContactBlockComponent,
     ActivePlacementsComponent,
     DischargedPlacementsComponent,
+    ListClientsComponent,
+    ClientDetailComponent,
+    CreateClientComponent,
+    DischargeClientComponent,
+    CreateCaseNoteComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,18 @@ import { CreatePlacingAgencyComponent } from './pages/create-placing-agency/crea
 import { HomeComponent } from './pages/home/home.component';
 import { ListPlacingAgenciesComponent } from './pages/list-placing-agencies/list-placing-agencies.component';
 import { PlacingAgencyDetailComponent } from './pages/placing-agency-detail/placing-agency-detail.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  {
+    path: 'users',
+    component: UserListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
   {
     path: 'users/profile/:id',
     component: UserProfileComponent,

@@ -1,0 +1,27 @@
+.address-contact-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.address,
+.contact,
+.active-placements {
+  margin-top: 1rem;
+  flex: 1 1 auto;
+}
+
+.address {
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .address-contact-container {
+    flex-direction: column;
+  }
+
+  .address {
+    margin-right: 0;
+  }
+}

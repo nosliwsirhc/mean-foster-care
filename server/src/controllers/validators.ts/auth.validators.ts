@@ -17,7 +17,7 @@ export const registerSchema = Joi.object<IUser>({
   jobTitle: Joi.string().required(),
   manager: Joi.string().required(),
   nameGiven: Joi.string().min(2).required(),
-  nameMiddle: Joi.string(),
+  nameMiddle: Joi.string().allow(null, ''),
   nameFamily: Joi.string().min(2).required(),
   password: Joi.string()
     .pattern(new RegExp('^[a-zA-Z0-9!@#$%^&*()]{8,30}$'))

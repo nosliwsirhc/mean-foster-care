@@ -50,7 +50,11 @@ const authenticate = async (req: Request, res: Response) => {
 const register = async (req: Request, res: Response) => {
   try {
     const user = req.body as IRegisterUser
+    console.log(user)
     user.picture = req.file.path
+    if (user.nameMiddle === 'null') {
+      user.nameMiddle = undefined
+    }
     await registerSchema.validateAsync(user)
     const userExists = await User.findOne({
       email: user.email.toLowerCase().trim(),

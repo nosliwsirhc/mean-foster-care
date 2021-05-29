@@ -1,37 +1,47 @@
-<h1>Home</h1>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Home</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
 <div class="actions" *ngIf="authenticated$ | async; else notAuthenticated">
-  <div class="manager-actions">
+  <mat-card class="sub-actions" *ngIf="user.isManager">
     <h2>Manager Actions</h2>
     <a mat-button [routerLink]="['/', 'register']">Register User</a>
-  </div>
-  <div class="client-actions">
+    <a mat-button [routerLink]="['/', 'users']">List Users</a>
+  </mat-card>
+  <mat-card class="sub-actions">
     <h2>Client Actions</h2>
     <a mat-button href="#">List Active Clients</a>
     <a mat-button href="#">List Discharged Clients</a>
     <a mat-button href="#">New Client</a>
     <a mat-button href="#">Discharge Client</a>
-    <div class="sub-actions">
-      <mat-divider></mat-divider>
-      <a mat-button href="#">Case Note</a>
-      <a mat-button href="#">Update Client Profile</a>
-      <a mat-button href="#">Plan of Care</a>
-      <a mat-button href="#">Incident Report</a>
-      <a mat-button href="#">Serious Occurrence Report</a>
-    </div>
-  </div>
-  <div class="home-actions">
+    <a mat-button href="#">Case Note</a>
+    <a mat-button href="#">Update Client Profile</a>
+    <a mat-button href="#">Plan of Care</a>
+    <a mat-button href="#">Incident Report</a>
+    <a mat-button href="#">Serious Occurrence Report</a>
+  </mat-card>
+  <mat-card class="sub-actions">
     <h2>Home Actions</h2>
     <a mat-button href="#">List Active Homes</a>
     <a mat-button href="#">List Closed Homes</a>
     <a mat-button href="#">New Home</a>
     <a mat-button href="#">Close Home</a>
-    <div class="sub-actions">
-      <mat-divider></mat-divider>
-      <a mat-button href="#">Case Note</a>
-      <a mat-button href="#">Update Home Profile</a>
-      <a mat-button href="#">Annual Review</a>
-    </div>
-  </div>
+    <a mat-button href="#">Case Note</a>
+    <a mat-button href="#">Update Home Profile</a>
+    <a mat-button href="#">Annual Review</a>
+  </mat-card>
+  <mat-card class="sub-actions">
+    <h2>Placing Agency Actions</h2>
+    <a mat-button [routerLink]="['/', 'placing-agencies']"
+      >List Placing Agencies</a
+    >
+    <a mat-button [routerLink]="['/', 'placing-agencies', 'create']"
+      >New Placing Agency</a
+    >
+    <a mat-button href="#">New Worker</a>
+  </mat-card>
 </div>
 
 <ng-template #notAuthenticated>

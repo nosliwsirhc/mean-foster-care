@@ -1,5 +1,18 @@
 .mat-nav-list {
   img {
     margin-right: 1rem;
+    border: 1px solid blue;
+    padding: 3px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .mat-nav-list {
+    .mat-list-item {
+      margin-bottom: 0.8rem;
+    }
+    img {
+      margin-right: 0.5rem;
+    }
   }
 }

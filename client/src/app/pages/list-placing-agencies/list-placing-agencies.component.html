@@ -1,17 +1,23 @@
-<h1>Placing Agencies</h1>
-<ng-container *ngIf="placingAgencies$ | async as pas">
-  <mat-nav-list>
-    <a
-      mat-list-item
-      *ngFor="let pa of pas"
-      [routerLink]="['/', 'placing-agencies', pa._id]"
-    >
-      <img
-        matListAvatar
-        [src]="pa.logo ? pa.logo : 'assets/images/blank-placing-agency.png'"
-        alt="logo"
-      />
-      {{ pa.name }}
-    </a>
-  </mat-nav-list>
-</ng-container>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Placing Agencies</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<mat-card style="margin-top: 2rem">
+  <ng-container *ngIf="placingAgencies$ | async as pas">
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let pa of pas"
+        [routerLink]="['/', 'placing-agencies', pa._id]"
+      >
+        <img
+          matListAvatar
+          [src]="pa.logo ? pa.logo : 'assets/images/blank-placing-agency.png'"
+          alt="logo"
+        />
+        {{ pa.name }}
+      </a>
+    </mat-nav-list>
+  </ng-container>
+</mat-card>

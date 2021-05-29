@@ -13,19 +13,31 @@
         Placements</mat-card-subtitle
       >
     </mat-card-header>
+  </mat-card>
+  <div class="address-contact-container">
+    <mat-card class="address">
+      <mat-card-content>
+        <address-block
+          [address]="{
+            street1: pa.street1,
+            street2: pa.street2,
+            city: pa.city,
+            province: pa.province,
+            postalCode: pa.postalCode
+          }"
+        ></address-block>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="contact">
+      <mat-card-content>
+        <contact-block
+          [contact]="{ phone: pa.phone, fax: pa.fax }"
+        ></contact-block>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card class="active-placements">
     <mat-card-content>
-      <address-block
-        [address]="{
-          street1: pa.street1,
-          street2: pa.street2,
-          city: pa.city,
-          province: pa.province,
-          postalCode: pa.postalCode
-        }"
-      ></address-block>
-      <contact-block
-        [contact]="{ phone: pa.phone, fax: pa.fax }"
-      ></contact-block>
       <active-placements
         [activePlacements]="activePlacements"
       ></active-placements>

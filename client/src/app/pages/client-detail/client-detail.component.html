@@ -1,1 +1,16 @@
-<p>client-detail works!</p>
+<ng-container *ngIf="client">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ getFullName }}</mat-card-title>
+      <mat-card-subtitle
+        >{{ client.currentPlacement.placingAgencyName }} |
+        {{ client.currentPlacement.fosterHomeName }}</mat-card-subtitle
+      >
+    </mat-card-header>
+  </mat-card>
+  <mat-card>
+    <mat-card-content>
+      Placement Date: {{ client.currentPlacement.dateOfPlacement | date }}
+    </mat-card-content>
+  </mat-card>
+</ng-container>

@@ -5,7 +5,7 @@
 </mat-card>
 <mat-card style="margin-top: 2rem">
   <ng-container *ngIf="placingAgencies$ | async as pas">
-    <mat-nav-list>
+    <mat-nav-list *ngIf="pas.length > 0; else noPas">
       <a
         mat-list-item
         *ngFor="let pa of pas"
@@ -21,3 +21,7 @@
     </mat-nav-list>
   </ng-container>
 </mat-card>
+
+<ng-template #noPas>
+  <p><strong>No placing agencies found.</strong></p>
+</ng-template>

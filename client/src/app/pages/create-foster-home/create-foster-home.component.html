@@ -1,0 +1,35 @@
+<form [formGroup]="homeForm" (ngSubmit)="submit()">
+  <mat-card class="title">
+    <mat-card-header>
+      <mat-card-title>Create Foster Home</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="form">
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Johnson-Klein Home - Barrie"
+          formControlName="name"
+        />
+        <mat-hint>Last names of parent(s), hyphen, name of town/city</mat-hint>
+        <mat-error *ngIf="!homeForm.get('name').valid"
+          >Must be at least two characters long.</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-button color="warn">Cancel</button>
+      <button
+        type="submit"
+        mat-button
+        color="primary"
+        [disabled]="!homeForm.valid"
+      >
+        Submit
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

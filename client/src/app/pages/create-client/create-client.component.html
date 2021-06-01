@@ -1,1 +1,81 @@
-<p>create-client works!</p>
+<form [formGroup]="clientForm" (ngSubmit)="submit()" *ngIf="clientForm">
+  <mat-card class="title">
+    <mat-card-header>
+      <mat-card-title>Create Client</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="form">
+    <mat-card-content>
+      <mat-form-field appearance="standard">
+        <mat-label>Given Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Jane"
+          formControlName="nameGiven"
+        />
+        <mat-error *ngIf="!clientForm.get('nameGiven').valid"
+          >Must be at least two characters.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Middle Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Candace"
+          formControlName="nameMiddle"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Family Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Doe"
+          formControlName="nameFamily"
+        />
+        <mat-error *ngIf="!clientForm.get('nameFamily').valid"
+          >Must be at least two characters.</mat-error
+        >
+      </mat-form-field>
+      <div formGroupName="currentPlacement" class="placement">
+        <h3>Current Placement</h3>
+        <mat-form-field appearance="standard" class="large-input">
+          <mat-label>Placing Agency</mat-label>
+          <mat-select
+            formControlName="placingAgency"
+            (selectionChange)="insertPaName($event)"
+          >
+            <mat-option *ngFor="let pa of placingAgencies" [value]="pa._id">{{
+              pa.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="!currentPlacement.get('placingAgency').valid"
+            >Select a Placing Agency</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="large-input">
+          <mat-label>Foster Home</mat-label>
+          <mat-select
+            formControlName="fosterHome"
+            (selectionChange)="insertHomeName($event)"
+          >
+            <mat-option *ngFor="let home of fosterHomes" [value]="home._id">{{
+              home.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="!currentPlacement.get('fosterHome').valid"
+            >Select a Foster Home</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-stroked-button color="warn" backButton>
+        Cancel
+      </button>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

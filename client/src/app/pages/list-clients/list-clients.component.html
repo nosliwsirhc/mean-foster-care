@@ -1,1 +1,24 @@
-<p>list-clients works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Clients</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<mat-card style="margin-top: 2rem">
+  <ng-container *ngIf="clients$ | async as clients">
+    <mat-nav-list *ngIf="clients.length > 0; else noClients">
+      <a
+        mat-list-item
+        *ngFor="let client of clients"
+        [routerLink]="['/', 'clients', 'profile', client._id]"
+      >
+        {{ client.nameGiven + " " + client.nameFamily }}
+      </a>
+    </mat-nav-list>
+  </ng-container>
+</mat-card>
+
+<ng-template #noClients>
+  <p>
+    <strong>No clients found.</strong>
+  </p>
+</ng-template>

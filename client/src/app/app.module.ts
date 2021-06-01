@@ -35,10 +35,15 @@ import { DischargeClientComponent } from './pages/discharge-client/discharge-cli
 import { CreateCaseNoteComponent } from './pages/create-case-note/create-case-note.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { AutofocusDirective } from './_helpers/directives/autofocus.directive';
+import { CreateFosterHomeComponent } from './pages/create-foster-home/create-foster-home.component';
+import { ListFosterHomesComponent } from './pages/list-foster-homes/list-foster-homes.component';
+import { FosterHomeDetailComponent } from './pages/foster-home-detail/foster-home-detail.component';
+import { BackButtonDirective } from './_helpers/directives/back-navigation.directive';
 
 @NgModule({
   declarations: [
     AutofocusDirective,
+    BackButtonDirective,
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -62,6 +67,9 @@ import { AutofocusDirective } from './_helpers/directives/autofocus.directive';
     DischargeClientComponent,
     CreateCaseNoteComponent,
     UserListComponent,
+    CreateFosterHomeComponent,
+    ListFosterHomesComponent,
+    FosterHomeDetailComponent,
   ],
   imports: [
     BrowserModule,

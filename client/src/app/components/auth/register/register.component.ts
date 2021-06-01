@@ -8,6 +8,7 @@ import { ImageCropperDialogComponent } from '../../image-cropper-dialog/image-cr
 import { dataURLtoFile } from 'src/app/_helpers/dataURLtoFile';
 import { UserService } from 'src/app/services/user.service';
 import { Subscription } from 'rxjs';
+import { fullName } from '../../../_helpers/fullName';
 
 @Component({
   selector: 'app-register',
@@ -98,17 +99,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
 
-  get fullName() {
-    const firstName = this.registerForm.get('nameGiven').value;
-    const middleName = this.registerForm.get('nameMiddle').value;
-    const familyName = this.registerForm.get('nameFamily').value;
-    if (firstName && !middleName && !familyName) return firstName;
-    if (firstName && !middleName && familyName)
-      return firstName + ' ' + familyName;
-    if (firstName && middleName && familyName)
-      return firstName + ' ' + middleName + ' ' + familyName;
-    if (firstName && middleName) return firstName + ' ' + middleName;
-    if (!firstName && !middleName && familyName) return familyName;
-    return 'Jane Doe';
+  get getFullName() {
+    const nameGiven = this.registerForm.get('nameGiven').value;
+    const nameMiddle = this.registerForm.get('nameMiddle').value;
+    const nameFamily = this.registerForm.get('nameFamily').value;
+    return fullName(nameGiven, nameMiddle, nameFamily);
   }
 }

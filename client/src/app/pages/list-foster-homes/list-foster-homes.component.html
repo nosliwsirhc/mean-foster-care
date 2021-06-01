@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Foster Homes</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<mat-card style="margin-top: 2rem">
+  <ng-container *ngIf="fosterHomes$ | async as homes">
+    <mat-nav-list *ngIf="homes.length > 0; else noHomes">
+      <a
+        mat-list-item
+        *ngFor="let home of homes"
+        [routerLink]="['/', 'foster-homes', 'profile', home._id]"
+      >
+        {{ home.name }}
+      </a>
+    </mat-nav-list>
+  </ng-container>
+</mat-card>
+
+<ng-template #noHomes>
+  <p><strong>No home found.</strong></p>
+</ng-template>

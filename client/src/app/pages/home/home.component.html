@@ -12,25 +12,25 @@
   </mat-card>
   <mat-card class="sub-actions">
     <h2>Client Actions</h2>
-    <a mat-button href="#">List Active Clients</a>
-    <a mat-button href="#">List Discharged Clients</a>
-    <a mat-button href="#">New Client</a>
-    <a mat-button href="#">Discharge Client</a>
-    <a mat-button href="#">Case Note</a>
-    <a mat-button href="#">Update Client Profile</a>
-    <a mat-button href="#">Plan of Care</a>
-    <a mat-button href="#">Incident Report</a>
-    <a mat-button href="#">Serious Occurrence Report</a>
+    <a mat-button [routerLink]="['/', 'clients']">List Active Clients</a>
+    <a mat-button href="#" disabled>List Discharged Clients</a>
+    <a mat-button [routerLink]="['/', 'clients', 'create']">New Client</a>
+    <a mat-button href="#" disabled>Discharge Client</a>
+    <a mat-button href="#" disabled>Case Note</a>
+    <a mat-button href="#" disabled>Update Client Profile</a>
+    <a mat-button href="#" disabled>Plan of Care</a>
+    <a mat-button href="#" disabled>Incident Report</a>
+    <a mat-button href="#" disabled>Serious Occurrence Report</a>
   </mat-card>
   <mat-card class="sub-actions">
     <h2>Home Actions</h2>
-    <a mat-button href="#">List Active Homes</a>
-    <a mat-button href="#">List Closed Homes</a>
-    <a mat-button href="#">New Home</a>
-    <a mat-button href="#">Close Home</a>
-    <a mat-button href="#">Case Note</a>
-    <a mat-button href="#">Update Home Profile</a>
-    <a mat-button href="#">Annual Review</a>
+    <a mat-button [routerLink]="['/', 'foster-homes']">List Active Homes</a>
+    <a mat-button href="#" disabled>List Closed Homes</a>
+    <a mat-button [routerLink]="['/', 'foster-homes', 'create']">New Home</a>
+    <a mat-button href="#" disabled>Close Home</a>
+    <a mat-button href="#" disabled>Case Note</a>
+    <a mat-button href="#" disabled>Update Home Profile</a>
+    <a mat-button href="#" disabled>Annual Review</a>
   </mat-card>
   <mat-card class="sub-actions">
     <h2>Placing Agency Actions</h2>
@@ -40,7 +40,7 @@
     <a mat-button [routerLink]="['/', 'placing-agencies', 'create']"
       >New Placing Agency</a
     >
-    <a mat-button href="#">New Worker</a>
+    <a mat-button href="#" disabled>New Worker</a>
   </mat-card>
 </div>
 

@@ -6,7 +6,7 @@
         mat-card-avatar
         [src]="picturePreview"
       />
-      <mat-card-title>{{ fullName }}</mat-card-title>
+      <mat-card-title>{{ getFullName }}</mat-card-title>
       <mat-card-subtitle>{{
         this.registerForm.get("jobTitle").value
           ? this.registerForm.get("jobTitle").value

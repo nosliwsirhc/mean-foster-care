@@ -16,7 +16,7 @@ export class PlacingAgencyService {
   constructor(private http: HttpClient, private router: Router) {}
 
   listPlacingAgencies() {
-    return this.http.get<any>(`${env.serverUrl}/placing-agencies`);
+    return this.http.get<IPlacingAgency[]>(`${env.serverUrl}/placing-agencies`);
   }
 
   createPlacingAgency(placingAgency: IPlacingAgency) {

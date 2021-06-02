@@ -2,7 +2,7 @@
   "name": "mean-foster-care",
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently \"cd server && npm run start:dev\" \"cd client && ng serve --host 0.0.0.0 \""
+    "dev": "concurrently \"cd server && npm run start:dev\" \"cd client && ng serve \""
   },
   "private": true,
   "dependencies": {},

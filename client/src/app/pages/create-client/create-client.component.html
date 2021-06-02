@@ -71,11 +71,19 @@
         </mat-form-field>
       </div>
     </mat-card-content>
+    <mat-divider></mat-divider>
     <mat-card-actions>
       <button type="button" mat-stroked-button color="warn" backButton>
         Cancel
       </button>
-      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!clientForm.valid"
+      >
+        Submit
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -13,7 +13,7 @@
       <img
         matListAvatar
         [src]="user.picture | authImage | async"
-        alt="profile picture"
+        alt="{{ user.nameGiven.substr(0, 1) + user.nameFamily.substr(0, 1) }}"
       />
       <h3 matLine>
         {{ user.fullName }}

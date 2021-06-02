@@ -20,11 +20,14 @@
         >
       </mat-form-field>
     </mat-card-content>
+    <mat-divider></mat-divider>
     <mat-card-actions>
-      <button type="button" mat-button color="warn">Cancel</button>
+      <button type="button" mat-stroked-button color="warn" backButton>
+        Cancel
+      </button>
       <button
         type="submit"
-        mat-button
+        mat-raised-button
         color="primary"
         [disabled]="!homeForm.valid"
       >

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from './components/auth/auth.module';
+// import { AuthModule } from './components/auth/auth.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { environment as env } from '../environments/environment';
@@ -39,10 +39,13 @@ import { CreateFosterHomeComponent } from './pages/create-foster-home/create-fos
 import { ListFosterHomesComponent } from './pages/list-foster-homes/list-foster-homes.component';
 import { FosterHomeDetailComponent } from './pages/foster-home-detail/foster-home-detail.component';
 import { BackButtonDirective } from './_helpers/directives/back-navigation.directive';
+import { LoginDialogComponent } from './components/auth/login-dialog/login-dialog.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AutofocusDirective,
+    // AutofocusDirective,
     BackButtonDirective,
     AppComponent,
     HomeComponent,
@@ -70,6 +73,8 @@ import { BackButtonDirective } from './_helpers/directives/back-navigation.direc
     CreateFosterHomeComponent,
     ListFosterHomesComponent,
     FosterHomeDetailComponent,
+    LoginDialogComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,9 +82,11 @@ import { BackButtonDirective } from './_helpers/directives/back-navigation.direc
     BrowserAnimationsModule,
     AppMaterialModule,
     HttpClientModule,
-    AuthModule,
     ReactiveFormsModule,
     ImageCropperModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

@@ -7,6 +7,8 @@ export interface Client {
   gender: string;
   religion: string;
   ethnicity: string;
+  language: string;
+  placeOfBirth: string;
   fnim: boolean;
   currentPlacement: Placement;
   previousPlacements: Placement[];

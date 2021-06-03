@@ -44,9 +44,11 @@ export class CreateClientComponent implements OnInit, OnDestroy {
       nameMiddle: [null],
       nameFamily: ['Bucket', [Validators.required, Validators.minLength(2)]],
       dateOfBirth: [new Date('11-22-2016'), [Validators.required]],
-      gender: [null, [Validators.required]],
+      gender: ['male', [Validators.required]],
       religion: ['Catholic'],
       ethnicity: ['Caucasian'],
+      language: [null],
+      placeOfBirth: [null],
       fnim: [false],
       currentPlacement: this.fb.group({
         placingAgency: [null],
@@ -96,6 +98,6 @@ export class CreateClientComponent implements OnInit, OnDestroy {
       careStatus: this.clientForm.get('careStatus').value,
       previousCareStatus: this.clientForm.get('previousCareStatus').value,
     };
-    console.log(client);
+    this.clientService.createClient(client).subscribe();
   }
 }

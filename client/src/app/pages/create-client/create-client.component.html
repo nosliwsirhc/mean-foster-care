@@ -6,7 +6,7 @@
   </mat-card>
   <mat-card class="form">
     <mat-card-content>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="outline">
         <mat-label>Given Name</mat-label>
         <input
           type="text"
@@ -18,7 +18,7 @@
           >Must be at least two characters.</mat-error
         >
       </mat-form-field>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="outline">
         <mat-label>Middle Name</mat-label>
         <input
           type="text"
@@ -27,7 +27,7 @@
           formControlName="nameMiddle"
         />
       </mat-form-field>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="outline">
         <mat-label>Family Name</mat-label>
         <input
           type="text"
@@ -39,9 +39,66 @@
           >Must be at least two characters.</mat-error
         >
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerDOB"
+          formControlName="dateOfBirth"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDOB"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerDOB></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Religion</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Islam - Sunni"
+          formControlName="religion"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ethnicity</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Pakistani"
+          formControlName="ethnicity"
+        />
+      </mat-form-field>
+      <section class="checkbox-section">
+        <mat-checkbox class="checkbox-margin" formControlName="fnim"
+          >First Nations, Inuit, Metis Status</mat-checkbox
+        >
+      </section>
+      <mat-form-field appearance="outline">
+        <mat-label>Language(s)</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="English, Urdu"
+          formControlName="language"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Place of Birth</mat-label>
+        <input type="text" matInput placeholder="Winnipeg, Maintoba, Canada" />
+      </mat-form-field>
       <div formGroupName="currentPlacement" class="placement">
         <h3>Current Placement</h3>
-        <mat-form-field appearance="standard" class="large-input">
+        <mat-form-field appearance="outline" class="large-input">
           <mat-label>Placing Agency</mat-label>
           <mat-select
             formControlName="placingAgency"
@@ -55,7 +112,7 @@
             >Select a Placing Agency</mat-error
           >
         </mat-form-field>
-        <mat-form-field appearance="standard" class="large-input">
+        <mat-form-field appearance="outline" class="large-input">
           <mat-label>Foster Home</mat-label>
           <mat-select
             formControlName="fosterHome"
@@ -68,6 +125,71 @@
           <mat-error *ngIf="!currentPlacement.get('fosterHome').valid"
             >Select a Foster Home</mat-error
           >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Placement Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerPlacementDate"
+            formControlName="dateOfPlacement"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerPlacementDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerPlacementDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Discharge Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerDischargeDate"
+            formControlName="dateOfDischarge"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerDischargeDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerDischargeDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div formGroupName="careStatus" class="care-status">
+        <h3>Care Status</h3>
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="TCA">Temporary Care Agreement</mat-option>
+            <mat-option value="ECS">Extended Society Care</mat-option>
+            <mat-option value="ISC">Interim Society Care</mat-option>
+            <mat-option value="CC">Customary Care</mat-option>
+            <mat-option value="OTHER">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerStartDate"
+            formControlName="dateStart"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerStartDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerStartDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Discharge</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerEndDate"
+            formControlName="dateEnd"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerEndDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerEndDate></mat-datepicker>
         </mat-form-field>
       </div>
     </mat-card-content>

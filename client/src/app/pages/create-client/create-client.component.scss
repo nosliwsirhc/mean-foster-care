@@ -18,6 +18,16 @@ h3 {
   margin-top: 1rem;
 }
 
+.checkbox-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.checkbox-margin {
+  margin: 0 10px;
+}
+
 .mat-card-actions > :first-child {
   margin-right: 1rem;
 }

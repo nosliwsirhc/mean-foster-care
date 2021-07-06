@@ -2,7 +2,7 @@ interface PopulatedManager {
   fullName: string;
 }
 
-export interface User {
+export interface IUser {
   _id?: string;
   dateOfBirth: Date;
   email: string;

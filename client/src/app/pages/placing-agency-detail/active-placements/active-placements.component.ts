@@ -9,6 +9,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { IActivePlacement } from '../../../models/active-placement.interface';
 
 @Component({
   selector: 'active-placements',
@@ -17,10 +18,10 @@ import { MatTableDataSource } from '@angular/material/table';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivePlacementsComponent implements AfterViewInit {
-  @Input() activePlacements: ActivePlacement[];
+  @Input() activePlacements: IActivePlacement[];
 
-  displayedColumns = ['nameFamily', 'nameGiven', 'placementDate'];
-  dataSource: MatTableDataSource<ActivePlacement>;
+  displayedColumns = ['nameFamily', 'nameGiven', 'dateOfPlacement'];
+  dataSource: MatTableDataSource<IActivePlacement>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,20 +29,26 @@ export class ActivePlacementsComponent implements AfterViewInit {
   constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<ActivePlacement>(
+    this.dataSource = new MatTableDataSource<IActivePlacement>(
       this.activePlacements
     );
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'nameFamily':
+          return item.client.nameFamily;
+        case 'nameGiven':
+          return item.client.nameGiven;
+        case 'dateOfPlacement':
+          return item.dateOfPlacement;
+        default:
+          return item[property];
+      }
+    };
     this.dataSource.sort = this.sort;
     this.cdRef.detectChanges();
   }
-}
-
-export interface ActivePlacement {
-  nameGiven: string;
-  nameFamily: string;
-  placementDate: Date;
 }

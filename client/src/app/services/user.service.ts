@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { environment as env } from '../../environments/environment';
-import { User } from '../models/user.interface';
+import { IUser } from '../models/user.interface';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class UserService {
     const formData = new FormData();
     formData.append('picture', picture);
     return this.http
-      .patch<User>(
+      .patch<IUser>(
         `${env.serverUrl}/users/change-profile-picture/${userId}`,
         formData
       )
@@ -39,11 +39,11 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get<User[]>(`${env.serverUrl}/users`);
+    return this.http.get<IUser[]>(`${env.serverUrl}/users`);
   }
 
   getUser(id: string) {
-    return this.http.get<User>(`${env.serverUrl}/users/profile/${id}`);
+    return this.http.get<IUser>(`${env.serverUrl}/users/profile/${id}`);
   }
 
   getManagers() {

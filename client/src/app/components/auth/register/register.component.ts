@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MimeType } from '../../../_helpers/validators/mime-type.validator';
 import { AuthService } from '../../../services/auth.service';
-import { RegisterUser } from '../../../models/register.interface';
+import { IRegisterUser } from '../../../models/register.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageCropperDialogComponent } from '../../image-cropper-dialog/image-cropper-dialog.component';
 import { dataURLtoFile } from 'src/app/_helpers/dataURLtoFile';
@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   register() {
     if (this.registerForm.valid) {
-      const userProfile: RegisterUser = {
+      const userProfile: IRegisterUser = {
         email: this.registerForm.value.email,
         roles: ['user'],
         isActive: true,

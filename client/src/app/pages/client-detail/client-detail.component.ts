@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ClientService } from 'src/app/services/client.service';
 import { fullName } from 'src/app/_helpers/fullName';
-import { Client } from '../../models/client.interface';
+import { IClient } from '../../models/client.interface';
 
 @Component({
   selector: 'app-client-detail',
@@ -12,7 +12,7 @@ import { Client } from '../../models/client.interface';
   styleUrls: ['./client-detail.component.scss'],
 })
 export class ClientDetailComponent implements OnInit, OnDestroy {
-  client: Client;
+  client: IClient;
   private routeSub: Subscription;
 
   constructor(

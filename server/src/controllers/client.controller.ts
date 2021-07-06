@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import Client from '../models/client.model'
+import PlacingAgency from '../models/placing-agency.model'
 
 export const createClient = async (req: Request, res: Response) => {
   try {
@@ -7,6 +8,15 @@ export const createClient = async (req: Request, res: Response) => {
     // !!! Run validation before production !!!
     const client = new Client(clientBody)
     await client.save()
+    const pa = await PlacingAgency.findOne({
+      _id: client.currentPlacement.placingAgency,
+    })
+    pa.activePlacements.push({
+      client: client._id,
+      fosterHome: client.currentPlacement.fosterHome,
+      dateOfPlacement: client.currentPlacement.dateOfPlacement,
+    })
+    await pa.save()
     res.status(201).json(client)
   } catch (error) {
     res.status(500).json({ message: 'Server error.' })

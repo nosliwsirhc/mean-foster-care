@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { FosterHome } from 'src/app/models/foster-home.interface';
+import { IFosterHome } from 'src/app/models/foster-home.interface';
 import { FosterHomeService } from 'src/app/services/foster-home.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { FosterHomeService } from 'src/app/services/foster-home.service';
   styleUrls: ['./foster-home-detail.component.scss'],
 })
 export class FosterHomeDetailComponent implements OnInit, OnDestroy {
-  fosterHome: FosterHome;
+  fosterHome: IFosterHome;
   routeSub: Subscription;
 
   constructor(

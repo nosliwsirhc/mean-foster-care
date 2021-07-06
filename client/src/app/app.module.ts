@@ -42,6 +42,7 @@ import { BackButtonDirective } from './_helpers/directives/back-navigation.direc
 import { LoginDialogComponent } from './components/auth/login-dialog/login-dialog.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
+import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     FosterHomeDetailComponent,
     LoginDialogComponent,
     RegisterComponent,
+    SidenavContentComponent,
   ],
   imports: [
     BrowserModule,

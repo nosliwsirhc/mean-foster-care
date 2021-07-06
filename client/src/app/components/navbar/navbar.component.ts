@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user.interface';
+import { IUser } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   @Input()
   isAuthenticated$: Observable<boolean>;
   @Input()
-  user: User;
+  user: IUser;
   @Output('logout')
   logoutEmitter = new EventEmitter<void>();
 

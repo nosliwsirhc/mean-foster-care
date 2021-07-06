@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { User } from './models/user.interface';
+import { IUser } from './models/user.interface';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user: User;
+  user: IUser;
   authStatus: Observable<boolean>;
   authStatusSub: Subscription;
 

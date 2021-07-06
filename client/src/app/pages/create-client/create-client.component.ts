@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { Subscription } from 'rxjs';
-import { Client } from 'src/app/models/client.interface';
-import { FosterHome } from 'src/app/models/foster-home.interface';
+import { IClient } from 'src/app/models/client.interface';
+import { IFosterHome } from 'src/app/models/foster-home.interface';
 import { IPlacingAgency } from 'src/app/models/placing-agency.interface';
 import { ClientService } from 'src/app/services/client.service';
 import { FosterHomeService } from 'src/app/services/foster-home.service';
@@ -18,7 +18,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   placingAgenciesSub: Subscription;
   placingAgencies: IPlacingAgency[];
   fosterHomesSub: Subscription;
-  fosterHomes: FosterHome[];
+  fosterHomes: IFosterHome[];
   clientForm: FormGroup;
 
   constructor(
@@ -91,7 +91,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
 
   submit() {
     if (!this.clientForm.valid) return;
-    const client: Client = {
+    const client: IClient = {
       ...this.clientForm.value,
       currentPlacement: this.clientForm.get('currentPlacement').value,
       previousPlacements: this.clientForm.get('previousPlacements').value,

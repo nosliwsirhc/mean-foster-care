@@ -1,3 +1,5 @@
+import { IActivePlacement } from './active-placement.interface';
+
 export interface IPlacingAgency {
   _id?: string;
   name: string;
@@ -13,6 +15,6 @@ export interface IPlacingAgency {
   mileageCostShare?: number;
   mileageExclusionPolicy?: string;
   emailPolicy?: string;
-  activePlacements: string[];
-  dischargedPlacements: string[];
+  activePlacements: IActivePlacement[];
+  dischargedPlacements: IActivePlacement[];
 }

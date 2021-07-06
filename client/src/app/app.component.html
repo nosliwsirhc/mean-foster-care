@@ -6,7 +6,20 @@
       (logout)="logout()"
     ></app-navbar>
   </nav>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+  <mat-sidenav-container>
+    <mat-sidenav
+      opened="true"
+      mode="side"
+      #sidenav
+      [fixedInViewport]="true"
+      [fixedTopGap]="64"
+    >
+      <app-sidenav-content></app-sidenav-content>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

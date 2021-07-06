@@ -1,4 +1,4 @@
-<ng-container *ngIf="placingAgency$ | async as pa; else notFound">
+<ng-container *ngIf="placingAgency as pa; else notFound">
   <mat-card>
     <mat-card-header>
       <img
@@ -39,7 +39,8 @@
   <mat-card class="active-placements">
     <mat-card-content>
       <active-placements
-        [activePlacements]="activePlacements"
+        [activePlacements]="pa.activePlacements"
+        *ngIf="pa.activePlacements.length > 0; else noActivePlacements"
       ></active-placements>
     </mat-card-content>
   </mat-card>
@@ -48,4 +49,8 @@
 <ng-template #notFound>
   <h1>Not Found</h1>
   <p>The placing agency you were looking for wasn't found.</p>
+</ng-template>
+
+<ng-template #noActivePlacements>
+  <p><strong>No active placements</strong></p>
 </ng-template>

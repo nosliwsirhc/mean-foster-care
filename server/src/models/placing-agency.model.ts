@@ -1,4 +1,5 @@
-import { model, Schema, Document } from 'mongoose'
+import { string } from 'joi'
+import { model, Schema, Document, Types } from 'mongoose'
 
 export interface IPlacingAgency {
   name: string
@@ -18,10 +19,32 @@ export interface IPlacingAgency {
   dischargedPlacements: string[]
 }
 
+interface IPlacement {
+  client: string
+  fosterHome: string
+  dateOfPlacement: Date
+  dateOfDischarge?: Date
+}
+
+interface IPlacementDocument extends Document {}
+
 interface PlacingAgencyDocument extends IPlacingAgency, Document {
   addPlacement(userId: string): void
   dischargePlacement(userId: string): void
 }
+
+const PlacementSchema = new Schema<IPlacementDocument>({
+  client: {
+    type: Types.ObjectId,
+    ref: 'Client',
+  },
+  fosterHome: {
+    type: Types.ObjectId,
+    ref: 'FosterHome',
+  },
+  dateOfPlacement: Date,
+  dateOfDischarge: Date,
+})
 
 const PlacingAgencySchema = new Schema<PlacingAgencyDocument>(
   {
@@ -41,8 +64,8 @@ const PlacingAgencySchema = new Schema<PlacingAgencyDocument>(
     mileageCostShare: Number,
     mileageExclusionPolicy: String,
     emailPolicy: String,
-    activePlacements: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
-    dischargedPlacements: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
+    activePlacements: [PlacementSchema],
+    dischargedPlacements: [PlacementSchema],
   },
   {
     timestamps: true,

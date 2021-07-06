@@ -1,5 +1,5 @@
-import { User } from './user.interface';
+import { IUser } from './user.interface';
 
-export interface RegisterUser extends User {
+export interface IRegisterUser extends IUser {
   password: string;
 }

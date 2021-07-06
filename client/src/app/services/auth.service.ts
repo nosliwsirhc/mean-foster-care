@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
-import { RegisterUser } from '../models/register.interface';
-import { User } from '../models/user.interface';
+import { IRegisterUser } from '../models/register.interface';
+import { IUser } from '../models/user.interface';
 
 interface AuthResponse {
-  user: User;
+  user: IUser;
   accessJwt: string;
   accessExp: number;
   refreshJwt: string;
@@ -69,7 +69,7 @@ export class AuthService {
       });
   }
 
-  register(user: RegisterUser) {
+  register(user: IRegisterUser) {
     console.log(user);
     const postData = new FormData();
     Object.keys(user).forEach((key) => {
@@ -123,12 +123,12 @@ export class AuthService {
   }
 
   getUser() {
-    const user = <User>JSON.parse(localStorage.getItem(this.USER));
+    const user = <IUser>JSON.parse(localStorage.getItem(this.USER));
     return user;
   }
 
   private storeTokens(
-    user: User,
+    user: IUser,
     accessJwt: string,
     accessExp: number,
     refreshJwt: string,
@@ -154,7 +154,7 @@ export class AuthService {
     if (!tokens.refreshJwt || !this.isRefreshTokenExpired) {
       this.removeTokens();
     } else {
-      const user = <User>JSON.parse(localStorage.getItem(this.USER));
+      const user = <IUser>JSON.parse(localStorage.getItem(this.USER));
       const userId = user._id;
       this.http
         .get(`${env.serverUrl}/users/profile/${userId}`)
@@ -169,7 +169,7 @@ export class AuthService {
   }
 
   retrieveTokens(): {
-    user: User;
+    user: IUser;
     accessJwt: string;
     accessExp: number;
     refreshJwt: string;
@@ -184,7 +184,7 @@ export class AuthService {
     };
   }
 
-  updateUserInLocalStorage(user: User) {
+  updateUserInLocalStorage(user: IUser) {
     localStorage.setItem(this.USER, JSON.stringify(user));
   }
 

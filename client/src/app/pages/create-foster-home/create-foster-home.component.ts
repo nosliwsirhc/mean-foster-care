@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FosterHome } from 'src/app/models/foster-home.interface';
+import { IFosterHome } from 'src/app/models/foster-home.interface';
 import { FosterHomeService } from 'src/app/services/foster-home.service';
 
 @Component({
@@ -24,8 +24,7 @@ export class CreateFosterHomeComponent implements OnInit {
 
   submit() {
     if (!this.homeForm.valid) return;
-    console.log('Creating foster home...');
-    const home: FosterHome = { ...this.homeForm.value };
+    const home: IFosterHome = { ...this.homeForm.value };
     this.fosterHomeService.createFosterHome(home).subscribe();
   }
 }

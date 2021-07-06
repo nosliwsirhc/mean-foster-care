@@ -7,7 +7,7 @@ import {
   revokeRefreshTokenByToken,
   revokeRefreshTokenByUserId,
 } from '../_helpers/auth.helper'
-import { loginSchema, registerSchema } from './validators.ts/auth.validators'
+import { loginSchema, registerSchema } from './validators/auth.validators'
 import { uploadFile } from '../_helpers/s3'
 import fs from 'fs'
 import util from 'util'

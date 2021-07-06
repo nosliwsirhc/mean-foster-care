@@ -1,4 +1,4 @@
-export interface Client {
+export interface IClient {
   _id?: string;
   nameGiven: string;
   nameMiddle?: string;

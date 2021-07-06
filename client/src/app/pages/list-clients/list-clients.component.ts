@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from 'src/app/models/client.interface';
+import { IClient } from 'src/app/models/client.interface';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ClientService } from 'src/app/services/client.service';
   styleUrls: ['./list-clients.component.scss'],
 })
 export class ListClientsComponent implements OnInit {
-  clients$: Observable<Client[]>;
+  clients$: Observable<IClient[]>;
 
   constructor(private clientService: ClientService) {}
 

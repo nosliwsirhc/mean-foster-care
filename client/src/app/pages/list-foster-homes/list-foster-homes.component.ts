@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FosterHome } from 'src/app/models/foster-home.interface';
+import { IFosterHome } from 'src/app/models/foster-home.interface';
 import { FosterHomeService } from 'src/app/services/foster-home.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { FosterHomeService } from 'src/app/services/foster-home.service';
   styleUrls: ['./list-foster-homes.component.scss'],
 })
 export class ListFosterHomesComponent implements OnInit {
-  fosterHomes$: Observable<FosterHome[]>;
+  fosterHomes$: Observable<IFosterHome[]>;
 
   constructor(private homeService: FosterHomeService) {}
 

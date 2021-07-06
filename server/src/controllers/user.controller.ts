@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import User from '../models/user.model'
 import { uploadFile, deleteFile } from '../_helpers/s3'
-import { changePasswordSchema } from './validators.ts/user.validators'
+import { changePasswordSchema } from './validators/user.validators'
 
 export const changePassword = async (req: Request, res: Response) => {
   try {

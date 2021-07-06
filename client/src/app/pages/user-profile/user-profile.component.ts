@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
-import { of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ImageCropperDialogComponent } from 'src/app/components/image-cropper-dialog/image-cropper-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { dataURLtoFile } from 'src/app/_helpers/dataURLtoFile';
-import { User } from '../../models/user.interface';
+import { IUser } from '../../models/user.interface';
 import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
 
 @Component({
@@ -16,7 +16,7 @@ import { ChangePasswordDialogComponent } from './change-password-dialog/change-p
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
-  user: User;
+  user: IUser;
   routerSub: Subscription;
   isPictureLoading = true;
 

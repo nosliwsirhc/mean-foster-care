@@ -34,19 +34,21 @@ import { CreateClientComponent } from './pages/create-client/create-client.compo
 import { DischargeClientComponent } from './pages/discharge-client/discharge-client.component';
 import { CreateCaseNoteComponent } from './pages/create-case-note/create-case-note.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { AutofocusDirective } from './_helpers/directives/autofocus.directive';
 import { CreateFosterHomeComponent } from './pages/create-foster-home/create-foster-home.component';
 import { ListFosterHomesComponent } from './pages/list-foster-homes/list-foster-homes.component';
 import { FosterHomeDetailComponent } from './pages/foster-home-detail/foster-home-detail.component';
 import { BackButtonDirective } from './_helpers/directives/back-navigation.directive';
-import { LoginDialogComponent } from './components/auth/login-dialog/login-dialog.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
 import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MyClientsComponent } from './pages/dashboard/my-clients/my-clients.component';
+import { MyTasksComponent } from './pages/dashboard/my-tasks/my-tasks.component';
+import { MyAppointmentsComponent } from './pages/dashboard/my-appointments/my-appointments.component';
+import { MyHomesComponent } from './pages/dashboard/my-homes/my-homes.component';
 
 @NgModule({
   declarations: [
-    // AutofocusDirective,
     BackButtonDirective,
     AppComponent,
     HomeComponent,
@@ -74,9 +76,13 @@ import { SidenavContentComponent } from './components/sidenav-content/sidenav-co
     CreateFosterHomeComponent,
     ListFosterHomesComponent,
     FosterHomeDetailComponent,
-    LoginDialogComponent,
     RegisterComponent,
     SidenavContentComponent,
+    DashboardComponent,
+    MyClientsComponent,
+    MyTasksComponent,
+    MyAppointmentsComponent,
+    MyHomesComponent,
   ],
   imports: [
     BrowserModule,

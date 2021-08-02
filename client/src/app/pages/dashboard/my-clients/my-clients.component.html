@@ -1,0 +1,10 @@
+<div class="dashboard-item">
+    <h1>Clients</h1>
+    <mat-list *ngIf="clients$; else noClients">
+        <mat-list-item *ngFor="let client of clients$ | async">{{client.nameGiven + ' ' + client.nameFamily}}</mat-list-item>
+    </mat-list>
+</div>
+
+<ng-template #noClients>
+    <p>No Clients</p>
+</ng-template>

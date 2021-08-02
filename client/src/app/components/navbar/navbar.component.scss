@@ -1,5 +1,6 @@
 a {
   padding-top: 6px;
+  margin-right: 0.6rem;
 }
 .active > img {
   box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.5);
@@ -9,6 +10,12 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 22px;
+}
+
+.toolbar-menu.mat-icon-button {
+  border: 2px solid white;
+  line-height: 24px !important;
+  margin: 0 0.6rem;
 }
 
 .profile-picture {
@@ -26,4 +33,10 @@ a {
     border-radius: 24px;
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.5);
   }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

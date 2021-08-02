@@ -1,0 +1,10 @@
+<div class="dashboard-item">
+    <h1>Homes</h1>
+    <mat-list *ngIf="homes$; else noHomes">
+        <mat-list-item *ngFor="let home of homes$ | async">{{home.name}}</mat-list-item>
+    </mat-list>
+</div>
+
+<ng-template #noHomes>
+    <p>No Homes</p>
+</ng-template>

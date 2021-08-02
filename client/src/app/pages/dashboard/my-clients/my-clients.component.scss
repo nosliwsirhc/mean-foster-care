@@ -1,0 +1,14 @@
+.dashboard-item {
+    background: rgb(245,245,245);
+    border-radius: 6px;
+    padding: 0.5rem;
+    max-width: 250px;
+    h1 {
+        padding: 0.5rem;
+        margin: 0;
+    }
+    .mat-list {
+        overflow-y: scroll;
+        max-height: 250px;
+    }
+}

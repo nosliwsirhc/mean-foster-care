@@ -1,1 +1,44 @@
-<button mat-button (click)="openLoginDialog()">Login</button>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+        <div class="warning" *ngIf="loginError">
+          <h3 class="mat-h3">
+            There was an error logging in. Check your credentials and try again.
+          </h3>
+        </div>
+      </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="your.name@email.com"
+          formControlName="email"
+        />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="loginForm.get('email').invalid"
+          >Enter a valid email address</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-error *ngIf="loginForm.get('password').invalid"
+          >Password must be 8 characters or more</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!loginForm.valid || isLoggingIn"
+      >
+        Authenticate
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  </form>

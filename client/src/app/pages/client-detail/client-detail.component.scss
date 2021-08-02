@@ -5,3 +5,25 @@
 .mat-card:last-of-type {
   margin-bottom: 0;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.data {
+  padding: 1rem;
+  margin: 1rem;
+  background: #eee;
+  border-radius: 6px;
+  max-width: 250px;
+  .mat-list {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+}
+
+.mat-list-item:hover {
+  background: #dedede;
+}

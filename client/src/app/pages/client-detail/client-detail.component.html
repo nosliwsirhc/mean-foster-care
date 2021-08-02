@@ -4,13 +4,105 @@
       <mat-card-title>{{ getFullName }}</mat-card-title>
       <mat-card-subtitle
         >{{ client.currentPlacement.placingAgencyName }} |
-        {{ client.currentPlacement.fosterHomeName }}</mat-card-subtitle
+        {{ client.currentPlacement.fosterHomeName }} | Placement Date: {{ client.currentPlacement.dateOfPlacement | date }}</mat-card-subtitle
       >
     </mat-card-header>
   </mat-card>
   <mat-card>
     <mat-card-content>
-      Placement Date: {{ client.currentPlacement.dateOfPlacement | date }}
+      <div class="flex-container">
+      <div class="data">
+        <h3>Plans of Care</h3>
+        <mat-list dense>
+          <mat-list-item>
+            <h3 matLine>
+              January 4, 2021
+            </h3>
+            <p matLine>
+              <span>Complete</span> | 
+              <a href="#">View</a>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matLine>
+              June 2, 2021
+            </h3>
+            <p matLine>
+              <span>In Progress</span> | 
+              <a href="#">Go</a>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matLine>
+              December 2, 2021
+            </h3>
+            <p matLine>
+              <span>Upcoming</span> | 
+              <a href="#">Start</a>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matLine>
+              December 2, 2021
+            </h3>
+            <p matLine>
+              <span>Upcoming</span> | 
+              <a href="#">Start</a>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matLine>
+              December 2, 2021
+            </h3>
+            <p matLine>
+              <span>Upcoming</span> | 
+              <a href="#">Start</a>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="data">
+        <h3>Appointments</h3>
+        <mat-list dense>
+          <mat-list-item>
+            <h3 matLine>
+              Health | January 4, 2021
+            </h3>
+            <p matLine>
+              <span>Annual Medical</span> | 
+              <a href="#">View</a> | <a href="#">Edit</a>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matLine>
+              Health | February 15, 2021
+            </h3>
+            <p matLine>
+              <span>Hearing Assessment</span> | 
+              <a href="#">View</a> | <a href="#">Edit</a>
+            </p>
+          </mat-list-item>
+        </mat-list>
+        </div>
+        <div class="data">
+          <h3>Case Notes</h3>
+          <mat-list dense>
+            <mat-list-item>
+              <h3 matLine>
+                January 4, 2021
+              </h3>
+              <p matLine>
+                <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptate?</span>
+                </p>
+                <p matLine>
+                  <a href="#">View</a> | <a href="#">Edit</a>
+                </p>
+          
+            </mat-list-item>
+            
+          </mat-list>
+          </div>
+          </div>
     </mat-card-content>
   </mat-card>
 </ng-container>

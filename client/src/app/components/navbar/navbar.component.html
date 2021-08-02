@@ -6,24 +6,38 @@
   >
     <img src="./assets/images/logo.jpg" alt="logo" class="logo" />
   </a>
+  <span>Annie's Havens</span>
   <span style="flex: 1 0 auto"></span>
-  <img
-    [src]="user?.picture | authImage | async"
-    alt="profile picture"
-    class="profile-picture"
-    *ngIf="isAuthenticated$ | async"
-    [matMenuTriggerFor]="profileMenu"
-  />
-  <login-button *ngIf="!(isAuthenticated$ | async)"></login-button>
-  <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/', 'users', 'profile', user?._id]">
-      Profile
+  <div class="flex-container" *ngIf="isAuthenticated$ | async">
+    <button class="toolbar-menu" mat-icon-button [matMenuTriggerFor]="notifications">
+      <mat-icon>notifications</mat-icon>
     </button>
-    <button mat-menu-item (click)="logout()">Logout</button>
-  </mat-menu>
+    <mat-menu #notifications="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+    
+    <img
+      [src]="user?.picture | authImage | async"
+      alt="profile picture"
+      class="profile-picture"
+      [matMenuTriggerFor]="profileMenu"
+    />
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item [routerLink]="['/', 'users', 'profile', user?._id]">
+        Profile
+      </button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
-
-<ng-template #authNotAuthenticated>
-  <login-button></login-button>
-  <signup-button></signup-button>
-</ng-template>
